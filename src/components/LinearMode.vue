@@ -7,6 +7,7 @@
         :key="step.id"
         class="step-item"
         :class="{ active: currentStep === index, completed: currentStep > index }"
+        @click="goToStep(index)"
       >
         <span class="step-number">{{ index + 1 }}</span>
         <span class="step-name">{{ step.name }}</span>
@@ -47,7 +48,10 @@
             <p><strong>职业:</strong> {{ caseStore.currentCase.parties.victim.occupation }}</p>
           </div>
         </div>
-        <button class="btn" @click="nextStep">查看证据</button>
+        <div class="btn-group">
+          <button class="btn btn-outline" @click="prevStep">返回案件概览</button>
+          <button class="btn" @click="nextStep">查看证据</button>
+        </div>
       </div>
       
       <!-- 证据分析 -->
@@ -57,7 +61,10 @@
           :evidences="caseStore.evidenceList" 
           :case-engine="caseStore.caseEngine"
         />
-        <button class="btn" @click="nextStep">回答法律问题</button>
+        <div class="btn-group">
+          <button class="btn btn-outline" @click="prevStep">返回阅读案情</button>
+          <button class="btn" @click="nextStep">回答法律问题</button>
+        </div>
       </div>
       
       <!-- 法律问题 -->
@@ -90,7 +97,10 @@
             </div>
           </div>
         </div>
-        <button class="btn" @click="nextStep" :disabled="!allQuestionsAnswered">查阅法条</button>
+        <div class="btn-group">
+          <button class="btn btn-outline" @click="prevStep">返回证据分析</button>
+          <button class="btn" @click="nextStep" :disabled="!allQuestionsAnswered">查阅法条</button>
+        </div>
       </div>
       
       <!-- 查阅法条 -->
@@ -102,7 +112,10 @@
             <p>{{ law.content }}</p>
           </div>
         </div>
-        <button class="btn" @click="nextStep">做出判决</button>
+        <div class="btn-group">
+          <button class="btn btn-outline" @click="prevStep">返回法律问题</button>
+          <button class="btn" @click="nextStep">做出判决</button>
+        </div>
       </div>
       
       <!-- 做出判决 -->
@@ -174,7 +187,10 @@
             </div>
           </div>
         </div>
-        <button class="btn btn-accent" @click="submitJudgment">提交判决</button>
+        <div class="btn-group">
+          <button class="btn btn-outline" @click="prevStep">返回查阅法条</button>
+          <button class="btn btn-accent" @click="submitJudgment">提交判决</button>
+        </div>
       </div>
     </div>
   </div>
@@ -185,6 +201,7 @@ import { ref, computed } from 'vue'
 import { useCaseStore } from '@/stores/caseStore'
 import { ScoreEngine } from '@/engines/scoreEngine'
 import EvidenceViewer from './EvidenceViewer.vue'
+import criminalLaw from '@/data/laws/criminal_law.json'
 
 const caseStore = useCaseStore()
 
@@ -214,30 +231,69 @@ const judgmentOptions = computed(() => {
 })
 
 const relatedLaws = computed(() => {
-  // 从法条数据中获取相关法条
-  // 简化实现，返回所有法条
-  return [
-    {
-      id: 'art_264',
-      number: '第二百六十四条',
-      title: '盗窃罪',
-      content: '盗窃公私财物，数额较大的，或者多次盗窃、入户盗窃、携带凶器盗窃、扒窃的，处三年以下有期徒刑、拘役或者管制，并处或者单处罚金；数额巨大或者有其他严重情节的，处三年以上十年以下有期徒刑，并处罚金；数额特别巨大或者有其他特别严重情节的，处十年以上有期徒刑或者无期徒刑，并处罚金或者没收财产。'
-    },
-    {
-      id: 'art_67',
-      number: '第六十七条',
-      title: '自首与坦白',
-      content: '犯罪以后自动投案，如实供述自己的罪行的，是自首。对于自首的犯罪分子，可以从轻或者减轻处罚。其中，犯罪较轻的，可以免除处罚。'
-    }
-  ]
+  const lawNumbers = new Set()
+  
+  if (caseStore.currentCase?.legal_issues) {
+    caseStore.currentCase.legal_issues.forEach(issue => {
+      issue.options.forEach(option => {
+        if (option.related_laws) {
+          option.related_laws.forEach(lawRef => {
+            const match = lawRef.match(/第(\d+)条/)
+            if (match) {
+              lawNumbers.add(parseInt(match[1]))
+            }
+          })
+        }
+      })
+    })
+  }
+  
+  if (caseStore.currentCase?.standard_answer?.legal_basis) {
+    caseStore.currentCase.standard_answer.legal_basis.forEach(law => {
+      const match = law.match(/第(\d+)条/)
+      if (match) {
+        lawNumbers.add(parseInt(match[1]))
+      }
+    })
+  }
+  
+  if (caseStore.currentCase?.tags) {
+    caseStore.currentCase.tags.forEach(tag => {
+      criminalLaw.articles.forEach(article => {
+        if (article.keywords.some(kw => tag.includes(kw))) {
+          const match = article.number.match(/第(\d+)条/)
+          if (match) {
+            lawNumbers.add(parseInt(match[1]))
+          }
+        }
+      })
+    })
+  }
+  
+  return criminalLaw.articles.filter(article => {
+    const match = article.number.match(/第(\d+)条/)
+    return match && lawNumbers.has(parseInt(match[1]))
+  })
 })
 
 const allQuestionsAnswered = computed(() => {
   return caseStore.legalQuestions.every(q => answers.value[q.id])
 })
 
+function goToStep(index) {
+  if (index <= currentStep.value) {
+    currentStep.value = index
+  }
+}
+
 function nextStep() {
   currentStep.value++
+}
+
+function prevStep() {
+  if (currentStep.value > 0) {
+    currentStep.value--
+  }
 }
 
 function selectAnswer(questionId, optionId) {
@@ -264,7 +320,6 @@ function isCorrect(questionId, optionId) {
 function submitJudgment() {
   caseStore.submitJudgment(judgment.value)
   
-  // 计算评分
   const scoreEngine = new ScoreEngine(
     caseStore.currentCase,
     caseStore.userAnswers,
@@ -293,6 +348,11 @@ function submitJudgment() {
   border: 2px solid #ccc;
   background: #fff;
   opacity: 0.6;
+  cursor: pointer;
+  
+  &:hover {
+    opacity: 0.8;
+  }
   
   &.active {
     border-color: #2B3A67;
@@ -304,6 +364,7 @@ function submitJudgment() {
   &.completed {
     border-color: #4CAF50;
     opacity: 1;
+    cursor: pointer;
   }
   
   .step-number {
@@ -436,5 +497,12 @@ function submitJudgment() {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.btn-group {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 </style>

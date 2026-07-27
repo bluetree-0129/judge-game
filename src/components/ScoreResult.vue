@@ -59,6 +59,59 @@
       </div>
     </div>
     
+    <!-- 评分细则 -->
+    <div class="scoring-rules pixel-card">
+      <h3>评分细则</h3>
+      <div class="rules-content">
+        <div class="rule-section">
+          <h4>📊 结果分 ({{ scoreData.breakdown.result.max }}分)</h4>
+          <ul>
+            <li>判决结果正确：{{ scoreData.breakdown.result.max }}分</li>
+            <li>判决结果错误：0分</li>
+          </ul>
+          <p class="rule-comment">{{ scoreData.breakdown.result.comment }}</p>
+        </div>
+        
+        <div class="rule-section">
+          <h4>🧠 过程分 ({{ scoreData.breakdown.process.max }}分)</h4>
+          <ul>
+            <li>根据法律问题回答正确率评分</li>
+            <li>答对所有问题：{{ scoreData.breakdown.process.max }}分</li>
+            <li>答对70%以上：{{ Math.round(scoreData.breakdown.process.max * 0.7) }}分以上</li>
+            <li>答对50%-70%：{{ Math.round(scoreData.breakdown.process.max * 0.5) }}-{{ Math.round(scoreData.breakdown.process.max * 0.7) }}分</li>
+            <li>答对不足50%：{{ Math.round(scoreData.breakdown.process.max * 0.5) }}分以下</li>
+          </ul>
+          <p class="rule-comment">{{ scoreData.breakdown.process.comment }}</p>
+          <p class="rule-detail">本次答题：{{ scoreData.breakdown.process.details?.correctCount || 0 }}/{{ scoreData.breakdown.process.details?.totalQuestions || 0 }} 题正确，正确率 {{ scoreData.breakdown.process.details?.accuracy || '0%' }}</p>
+        </div>
+        
+        <div class="rule-section">
+          <h4>📜 法条分 ({{ scoreData.breakdown.law.max }}分)</h4>
+          <ul>
+            <li>引用所有正确法条：{{ scoreData.breakdown.law.max }}分</li>
+            <li>引用部分正确法条：按匹配比例计分</li>
+            <li>未引用法条：0分</li>
+          </ul>
+          <p class="rule-comment">{{ scoreData.breakdown.law.comment }}</p>
+          <p v-if="scoreData.breakdown.law.details" class="rule-detail">
+            正确法条：{{ scoreData.breakdown.law.details.correctLaws?.join('、') || '无' }}<br>
+            你引用：{{ scoreData.breakdown.law.details.userLaws?.join('、') || '无' }}<br>
+            匹配率：{{ scoreData.breakdown.law.details.matchRate || '0%' }}
+          </p>
+        </div>
+        
+        <div class="rule-section">
+          <h4>💡 分析分 ({{ scoreData.breakdown.analysis.max }}分)</h4>
+          <ul>
+            <li>正确认定所有特殊情节：{{ scoreData.breakdown.analysis.max }}分</li>
+            <li>认定部分正确：按匹配比例计分</li>
+            <li>未认定或认定错误：0分</li>
+          </ul>
+          <p class="rule-comment">{{ scoreData.breakdown.analysis.comment }}</p>
+        </div>
+      </div>
+    </div>
+    
     <!-- 标准答案 -->
     <div class="standard-answer pixel-card">
       <h3>标准答案</h3>
@@ -75,6 +128,41 @@
           </ul>
         </div>
         <p class="reasoning"><strong>判决理由:</strong> {{ scoreData.standardAnalysis.reasoning }}</p>
+      </div>
+    </div>
+    
+    <!-- 判决对比 -->
+    <div class="judgment-comparison pixel-card">
+      <h3>判决对比</h3>
+      <div class="comparison-grid">
+        <div class="comparison-row">
+          <span class="label">判决结果</span>
+          <span class="user-value" :class="{ correct: caseStore.userJudgment?.guilty === scoreData.standardAnalysis.judgment }">
+            {{ caseStore.userJudgment?.guilty || '未选择' }}
+          </span>
+          <span class="arrow">→</span>
+          <span class="correct-value">{{ scoreData.standardAnalysis.judgment }}</span>
+        </div>
+        <div class="comparison-row">
+          <span class="label">量刑</span>
+          <span class="user-value" :class="{ correct: caseStore.userJudgment?.sentenceMonths && isSentenceApproximate(caseStore.userJudgment.sentenceMonths) }">
+            {{ caseStore.userJudgment?.sentenceMonths ? caseStore.userJudgment.sentenceMonths + '个月' : '未选择' }}
+          </span>
+          <span class="arrow">→</span>
+          <span class="correct-value">{{ scoreData.standardAnalysis.sentence }}</span>
+        </div>
+        <div class="comparison-row">
+          <span class="label">特殊情节</span>
+          <span class="user-value">{{ caseStore.userJudgment?.circumstances?.length || 0 }}项</span>
+          <span class="arrow">→</span>
+          <span class="correct-value">{{ getCorrectCircumstancesCount }}项</span>
+        </div>
+        <div class="comparison-row">
+          <span class="label">引用法条</span>
+          <span class="user-value">{{ caseStore.userJudgment?.laws?.length || 0 }}条</span>
+          <span class="arrow">→</span>
+          <span class="correct-value">{{ getCorrectLawsCount }}条</span>
+        </div>
       </div>
     </div>
     
@@ -140,10 +228,10 @@ const scoreData = computed(() => {
   return caseStore.scoreResult || {
     score: 0,
     breakdown: {
-      result: { score: 0, max: 40 },
-      process: { score: 0, max: 30 },
-      law: { score: 0, max: 20 },
-      analysis: { score: 0, max: 10 }
+      result: { score: 0, max: 40, comment: '' },
+      process: { score: 0, max: 30, comment: '', details: {} },
+      law: { score: 0, max: 20, comment: '', details: {} },
+      analysis: { score: 0, max: 10, comment: '' }
     },
     standardAnalysis: {},
     corrections: [],
@@ -151,10 +239,28 @@ const scoreData = computed(() => {
   }
 })
 
+const getCorrectCircumstancesCount = computed(() => {
+  if (!caseStore.currentCase?.judgment_options?.special_circumstances) return 0
+  return caseStore.currentCase.judgment_options.special_circumstances.filter(c => c.correct).length
+})
+
+const getCorrectLawsCount = computed(() => {
+  if (!scoreData.value.standardAnalysis?.legal_basis) return 0
+  return scoreData.value.standardAnalysis.legal_basis.length
+})
+
 function getProgressClass(ratio) {
   if (ratio >= 0.8) return 'good'
   if (ratio >= 0.6) return 'medium'
   return 'bad'
+}
+
+function isSentenceApproximate(userMonths) {
+  if (!scoreData.value.standardAnalysis?.sentence) return false
+  const match = scoreData.value.standardAnalysis.sentence.match(/(\d+)个月?/)
+  if (!match) return false
+  const standardMonths = parseInt(match[1])
+  return Math.abs(userMonths - standardMonths) <= 3
 }
 
 function restartCase() {
@@ -222,6 +328,52 @@ function restartCase() {
   }
 }
 
+.scoring-rules {
+  text-align: left;
+  margin-bottom: 32px;
+  
+  h3 {
+    margin-bottom: 16px;
+    color: #2B3A67;
+  }
+  
+  .rules-content {
+    .rule-section {
+      margin-bottom: 20px;
+      
+      h4 {
+        margin-bottom: 8px;
+        color: #2B3A67;
+      }
+      
+      ul {
+        padding-left: 24px;
+        margin-bottom: 8px;
+        
+        li {
+          margin-bottom: 4px;
+          font-size: 14px;
+          line-height: 1.6;
+        }
+      }
+      
+      .rule-comment {
+        padding: 8px 12px;
+        background: #e3f2fd;
+        border-left: 4px solid #2196f3;
+        font-size: 14px;
+        margin-bottom: 4px;
+      }
+      
+      .rule-detail {
+        font-size: 12px;
+        color: #666;
+        padding: 4px 12px;
+      }
+    }
+  }
+}
+
 .standard-answer {
   text-align: left;
   margin-bottom: 32px;
@@ -256,6 +408,58 @@ function restartCase() {
       background: #fff;
       border-left: 4px solid #FFD700;
       line-height: 1.6;
+    }
+  }
+}
+
+.judgment-comparison {
+  text-align: left;
+  margin-bottom: 32px;
+  
+  h3 {
+    margin-bottom: 16px;
+    color: #2B3A67;
+  }
+  
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: 120px 1fr 30px 1fr;
+    gap: 12px;
+    align-items: center;
+    
+    .comparison-row {
+      display: contents;
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      .label {
+        font-weight: bold;
+        color: #2B3A67;
+      }
+      
+      .user-value {
+        text-align: center;
+        color: #C41E3A;
+        
+        &.correct {
+          color: #4CAF50;
+        }
+      }
+      
+      .arrow {
+        text-align: center;
+        color: #999;
+      }
+      
+      .correct-value {
+        text-align: center;
+        color: #4CAF50;
+        font-weight: bold;
+      }
     }
   }
 }

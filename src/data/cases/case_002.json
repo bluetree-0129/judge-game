@@ -1,0 +1,116 @@
+{
+  "id": "case_002",
+  "title": "李四故意伤害案",
+  "difficulty": "easy",
+  "category": "刑法",
+  "tags": ["故意伤害罪", "正当防卫", "防卫过当"],
+  "background": {
+    "summary": "2024年1月8日晚，被告人李四与王五在酒吧因琐事发生争执。王五先动手推搡李四，李四用拳头击打王五面部，致王五鼻骨骨折，经鉴定为轻伤二级。王五倒地后，李四又踢了王五腹部两脚。",
+    "occurrence_date": "2024-01-08",
+    "location": "某市某酒吧"
+  },
+  "parties": {
+    "defendant": {
+      "name": "李四",
+      "age": 28,
+      "occupation": "公司职员",
+      "criminal_record": "无"
+    },
+    "victim": {
+      "name": "王五",
+      "age": 30,
+      "occupation": "个体户"
+    }
+  },
+  "evidence": [
+    {
+      "id": "ev_001",
+      "type": "鉴定意见",
+      "name": "伤情鉴定",
+      "content": "王五鼻骨骨折，评定为轻伤二级；腹部软组织挫伤，评定为轻微伤。",
+      "source": "司法鉴定中心",
+      "credibility": "high",
+      "highlights": [{"text": "轻伤二级", "analysis": "已达到故意伤害罪立案标准"}]
+    },
+    {
+      "id": "ev_002",
+      "type": "证人证言",
+      "name": "现场目击者证言",
+      "content": "证人赵六称：王五先推了李四一下，李四随后出拳打中王五面部，王五倒地后李四又踢了两脚。",
+      "source": "现场证人赵六",
+      "credibility": "medium",
+      "highlights": []
+    },
+    {
+      "id": "ev_003",
+      "type": "书证",
+      "name": "监控录像截图",
+      "content": "酒吧监控显示，王五先动手推搡，李四反击。王五倒地后，李四有踢踹动作。",
+      "source": "酒吧",
+      "credibility": "high",
+      "highlights": [{"text": "王五先动手推搡", "analysis": "被害人有过错"}]
+    }
+  ],
+  "legal_issues": [
+    {
+      "id": "issue_001",
+      "question": "李四的行为是否构成故意伤害罪？",
+      "type": "定性问题",
+      "order": 1,
+      "options": [
+        {"id": "opt_001", "text": "构成故意伤害罪", "correct": true, "score": 10, "reasoning": "李四故意非法损害王五身体健康，致轻伤二级，构成故意伤害罪。", "related_laws": ["刑法第234条"]},
+        {"id": "opt_002", "text": "构成正当防卫", "correct": false, "score": 0, "feedback": "王五仅推搡，不法侵害并不严重，李四后续踢踹倒地者已超出防卫必要限度。"},
+        {"id": "opt_003", "text": "不构成犯罪", "correct": false, "score": 0, "feedback": "造成轻伤二级后果，符合故意伤害罪构成要件，不构成犯罪错误。"}
+      ]
+    },
+    {
+      "id": "issue_002",
+      "question": "对于李四的行为应当如何认定？",
+      "type": "量刑情节",
+      "order": 2,
+      "options": [
+        {"id": "opt_004", "text": "故意伤害罪，但被害人有过错", "correct": true, "score": 10, "reasoning": "王五先动手，被害人存在过错，可对李四酌情从轻处罚。", "related_laws": ["刑法第234条"]},
+        {"id": "opt_005", "text": "故意伤害罪，应从重处罚", "correct": false, "score": 0, "feedback": "虽然李四行为构成犯罪，但被害人先动手存在过错，不应从重处罚。"},
+        {"id": "opt_006", "text": "防卫过当", "correct": false, "score": 0, "feedback": "李四反击时对方不法侵害已明显减弱，后续踢踹不构成防卫过当，应认定为故意伤害。"}
+      ]
+    }
+  ],
+  "judgment_options": {
+    "guilty_options": ["有罪", "无罪"],
+    "sentencing_range": {"min_months": 6, "max_months": 36, "default_months": 12},
+    "special_circumstances": [
+      {"id": "sc_001", "name": "被害人有过错", "correct": true, "effect": "可酌情从轻处罚"},
+      {"id": "sc_002", "name": "自首", "correct": false, "effect": "可以从轻处罚"},
+      {"id": "sc_003", "name": "坦白", "correct": false, "effect": "可以从轻处罚"}
+    ]
+  },
+  "standard_answer": {
+    "judgment": "有罪",
+    "conviction": "故意伤害罪",
+    "sentence": "有期徒刑八个月",
+    "legal_basis": [
+      "《中华人民共和国刑法》第234条：故意伤害他人身体的，处三年以下有期徒刑、拘役或者管制。",
+      "《中华人民共和国刑法》第61条：对于犯罪分子决定刑罚的时候，应当根据犯罪的事实、犯罪的性质、情节和对于社会的危害程度，依照本法的有关规定判处。"
+    ],
+    "reasoning": "李四故意殴打王五致轻伤二级，构成故意伤害罪。鉴于王五先动手推搡，被害人存在过错，可对李四酌情从轻处罚。李四踢踹倒地者体现主观恶性，但综合全案判处有期徒刑八个月。"
+  },
+  "scoring_rules": {
+    "total_score": 100,
+    "result_score": 40,
+    "process_score": 30,
+    "law_score": 20,
+    "analysis_score": 10,
+    "key_points": [
+      {"content": "正确认定故意伤害罪", "score": 15, "issue_id": "issue_001"},
+      {"content": "正确认定被害人过错", "score": 15, "issue_id": "issue_002"},
+      {"content": "判决结果正确", "score": 20, "type": "judgment"},
+      {"content": "量刑适当", "score": 10, "type": "sentencing"},
+      {"content": "正确认定特殊情节", "score": 10, "type": "circumstances"}
+    ]
+  },
+  "knowledge_points": [
+    {"name": "故意伤害罪构成要件", "category": "刑法", "importance": "high"},
+    {"name": "正当防卫与防卫过当", "category": "刑法", "importance": "high"},
+    {"name": "被害人过错", "category": "刑法", "importance": "medium"}
+  ]
+}

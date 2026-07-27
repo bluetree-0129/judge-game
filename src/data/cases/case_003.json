@@ -1,0 +1,127 @@
+{
+  "id": "case_003",
+  "title": "王五交通肇事案",
+  "difficulty": "easy",
+  "category": "刑法",
+  "tags": ["交通肇事罪", "逃逸", "自首"],
+  "background": {
+    "summary": "2024年5月12日凌晨，被告人王五饮酒后驾驶小轿车在市区道路上行驶，因超速且闯红灯，与正常通过路口的电动车发生碰撞，致电动车驾驶人赵某当场死亡。事故发生后，王五因害怕处罚驾车逃离现场，后于当日中午在家属陪同下主动到交警部门投案。",
+    "occurrence_date": "2024-05-12",
+    "location": "某市某路口"
+  },
+  "parties": {
+    "defendant": {
+      "name": "王五",
+      "age": 32,
+      "occupation": "私营业主",
+      "criminal_record": "无"
+    },
+    "victim": {
+      "name": "赵某",
+      "age": 45,
+      "occupation": "环卫工人"
+    }
+  },
+  "evidence": [
+    {
+      "id": "ev_001",
+      "type": "书证",
+      "name": "交通事故认定书",
+      "content": "王五饮酒后驾驶机动车超速、闯红灯，承担事故全部责任；赵某无责任。",
+      "source": "公安交警部门",
+      "credibility": "high",
+      "highlights": [{"text": "承担事故全部责任", "analysis": "交通肇事罪责任认定关键"}]
+    },
+    {
+      "id": "ev_002",
+      "type": "鉴定意见",
+      "name": "血液酒精含量检测",
+      "content": "王五血液中酒精含量为85mg/100ml，达到醉酒驾驶标准。",
+      "source": "司法鉴定机构",
+      "credibility": "high",
+      "highlights": [{"text": "85mg/100ml", "analysis": "醉酒驾驶，可构成危险驾驶罪或作为从重情节"}]
+    },
+    {
+      "id": "ev_003",
+      "type": "书证",
+      "name": "被告人供述",
+      "content": "王五到案后供述：当晚饮酒驾车，发生事故后因害怕坐牢，驾车逃离现场。中午在家属劝说下到交警队投案。",
+      "source": "公安机关",
+      "credibility": "high",
+      "highlights": [{"text": "驾车逃离现场；主动投案", "analysis": "逃逸情节与自首情节并存"}]
+    }
+  ],
+  "legal_issues": [
+    {
+      "id": "issue_001",
+      "question": "王五的行为构成何罪？",
+      "type": "定性问题",
+      "order": 1,
+      "options": [
+        {"id": "opt_001", "text": "交通肇事罪", "correct": true, "score": 10, "reasoning": "王五违反交通运输管理法规，发生重大事故致一人死亡且负全部责任，构成交通肇事罪。", "related_laws": ["刑法第133条"]},
+        {"id": "opt_002", "text": "危险驾驶罪", "correct": false, "score": 0, "feedback": "危险驾驶罪仅处罚醉酒驾驶等危险行为本身，本案已造成重大事故致人死亡，应择一重罪以交通肇事罪论处。"},
+        {"id": "opt_003", "text": "交通肇事罪与危险驾驶罪数罪并罚", "correct": false, "score": 0, "feedback": "醉酒驾驶是交通肇事罪的构成或从重情节，不应再单独以危险驾驶罪并罚。"}
+      ]
+    },
+    {
+      "id": "issue_002",
+      "question": "王五肇事后逃逸的行为如何影响量刑？",
+      "type": "量刑情节",
+      "order": 2,
+      "options": [
+        {"id": "opt_004", "text": "属于交通肇事后逃逸，应加重处罚", "correct": true, "score": 10, "reasoning": "王五在发生交通事故后为逃避法律追究而逃跑，属于交通运输肇事后逃逸。", "related_laws": ["刑法第133条"]},
+        {"id": "opt_005", "text": "属于一般自首，应从轻处罚", "correct": false, "score": 0, "feedback": "虽然王五后来投案，但逃逸行为本身已成立，属于逃逸后自首，不能否定逃逸情节。"},
+        {"id": "opt_006", "text": "逃逸不影响定罪量刑", "correct": false, "score": 0, "feedback": "交通肇事后逃逸是法定加重情节，会提升法定刑幅度。"}
+      ]
+    },
+    {
+      "id": "issue_003",
+      "question": "王五事后投案是否构成自首？",
+      "type": "量刑情节",
+      "order": 3,
+      "options": [
+        {"id": "opt_007", "text": "构成自首，可以从轻处罚", "correct": true, "score": 10, "reasoning": "王五犯罪后自动投案并如实供述主要犯罪事实，符合自首条件。", "related_laws": ["刑法第67条"]},
+        {"id": "opt_008", "text": "不构成自首", "correct": false, "score": 0, "feedback": "王五主动到交警部门投案并如实供述，符合自首构成要件。"}
+      ]
+    }
+  ],
+  "judgment_options": {
+    "guilty_options": ["有罪", "无罪"],
+    "sentencing_range": {"min_months": 36, "max_months": 84, "default_months": 48},
+    "special_circumstances": [
+      {"id": "sc_001", "name": "交通肇事后逃逸", "correct": true, "effect": "加重处罚"},
+      {"id": "sc_002", "name": "自首", "correct": true, "effect": "可以从轻处罚"},
+      {"id": "sc_003", "name": "醉酒驾驶", "correct": true, "effect": "酌情从重处罚"}
+    ]
+  },
+  "standard_answer": {
+    "judgment": "有罪",
+    "conviction": "交通肇事罪",
+    "sentence": "有期徒刑四年",
+    "legal_basis": [
+      "《中华人民共和国刑法》第133条：违反交通运输管理法规，因而发生重大事故，致人重伤、死亡或者使公私财产遭受重大损失的，处三年以下有期徒刑或者拘役；交通运输肇事后逃逸或者有其他特别恶劣情节的，处三年以上七年以下有期徒刑；因逃逸致人死亡的，处七年以上有期徒刑。",
+      "《中华人民共和国刑法》第67条：犯罪以后自动投案，如实供述自己的罪行的，是自首。对于自首的犯罪分子，可以从轻或者减轻处罚。"
+    ],
+    "reasoning": "王五违反交通运输管理法规，发生重大事故致一人死亡并负事故全部责任，构成交通肇事罪。事故发生后王五逃逸，应适用三年以上七年以下有期徒刑的法定刑幅度。其事后投案并如实供述，可认定为自首，依法从轻处罚。综合判处其有期徒刑四年。"
+  },
+  "scoring_rules": {
+    "total_score": 100,
+    "result_score": 40,
+    "process_score": 30,
+    "law_score": 20,
+    "analysis_score": 10,
+    "key_points": [
+      {"content": "正确认定交通肇事罪", "score": 10, "issue_id": "issue_001"},
+      {"content": "正确认定逃逸情节", "score": 10, "issue_id": "issue_002"},
+      {"content": "正确认定自首", "score": 10, "issue_id": "issue_003"},
+      {"content": "判决结果正确", "score": 20, "type": "judgment"},
+      {"content": "量刑适当", "score": 10, "type": "sentencing"},
+      {"content": "正确认定特殊情节", "score": 10, "type": "circumstances"}
+    ]
+  },
+  "knowledge_points": [
+    {"name": "交通肇事罪构成要件", "category": "刑法", "importance": "high"},
+    {"name": "交通肇事后逃逸", "category": "刑法", "importance": "high"},
+    {"name": "自首认定", "category": "刑法", "importance": "high"}
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "id": "case_007",
+  "title": "吴某违约解除合同案",
+  "difficulty": "medium",
+  "category": "民法",
+  "tags": ["违约责任", "合同解除", "定金罚则"],
+  "background": {
+    "summary": "2024年3月，甲公司与乙公司签订买卖合同，约定甲公司向乙公司购买一批原材料，总价款50万元，定金10万元，交货日期为2024年5月1日。合同签订后，甲公司支付定金10万元。后因原材料价格大幅上涨，乙公司拒绝交货，并要求解除合同。甲公司不同意，诉至法院要求乙公司双倍返还定金并赔偿损失。",
+    "occurrence_date": "2024-03-10",
+    "location": "某市"
+  },
+  "parties": {
+    "defendant": {
+      "name": "乙公司",
+      "age": null,
+      "occupation": "原材料供应商",
+      "criminal_record": null
+    },
+    "victim": {
+      "name": "甲公司",
+      "age": null,
+      "occupation": "制造企业"
+    }
+  },
+  "evidence": [
+    {
+      "id": "ev_001",
+      "type": "书证",
+      "name": "买卖合同",
+      "content": "合同约定总价款50万元，定金10万元，交货日期2024年5月1日，乙公司逾期交货超过15日甲公司有权解除合同。",
+      "source": "甲公司",
+      "credibility": "high",
+      "highlights": [{"text": "定金10万元；逾期超过15日可解除", "analysis": "定金条款与解除权约定"}]
+    },
+    {
+      "id": "ev_002",
+      "type": "书证",
+      "name": "定金支付凭证",
+      "content": "甲公司于2024年3月15日向乙公司转账10万元，备注为定金。",
+      "source": "银行",
+      "credibility": "high",
+      "highlights": [{"text": "转账10万元，备注定金", "analysis": "定金已实际交付"}]
+    },
+    {
+      "id": "ev_003",
+      "type": "书证",
+      "name": "乙公司拒绝交货函",
+      "content": "乙公司于2024年4月20日向甲公司发函称，因原材料价格上涨，无法按原价格供货，要求解除合同。",
+      "source": "乙公司",
+      "credibility": "high",
+      "highlights": [{"text": "乙公司单方要求解除合同", "analysis": "乙公司构成违约"}]
+    }
+  ],
+  "legal_issues": [
+    {
+      "id": "issue_001",
+      "question": "乙公司是否有权以原材料价格上涨为由单方解除合同？",
+      "type": "法律适用",
+      "order": 1,
+      "options": [
+        {"id": "opt_001", "text": "无权单方解除，构成违约", "correct": true, "score": 10, "reasoning": "原材料价格上涨属于商业风险，不属于情势变更或不可抗力，乙公司无权单方解除合同。", "related_laws": ["民法典第563条"]},
+        {"id": "opt_002", "text": "有权单方解除，属于情势变更", "correct": false, "score": 0, "feedback": "原材料价格上涨属于正常商业风险，不属于订立合同时无法预见的情势变更。"},
+        {"id": "opt_003", "text": "双方应重新协商价格", "correct": false, "score": 0, "feedback": "乙公司作为违约方，无权要求重新协商价格。"}
+      ]
+    },
+    {
+      "id": "issue_002",
+      "question": "甲公司可以主张何种违约责任？",
+      "type": "法律适用",
+      "order": 2,
+      "options": [
+        {"id": "opt_004", "text": "双倍返还定金", "correct": true, "score": 10, "reasoning": "收受定金一方不履行债务，应当双倍返还定金。", "related_laws": ["民法典第587条"]},
+        {"id": "opt_005", "text": "返还定金并支付违约金", "correct": false, "score": 0, "feedback": "合同未约定违约金，甲公司可主张定金罚则或赔偿损失，但不能同时主张未约定的违约金。"},
+        {"id": "opt_006", "text": "只能要求继续履行", "correct": false, "score": 0, "feedback": "甲公司作为守约方，可以选择解除合同并要求双倍返还定金，也可以选择继续履行。"}
+      ]
+    }
+  ],
+  "judgment_options": {
+    "guilty_options": ["支持原告诉请", "驳回原告诉请"],
+    "sentencing_range": {"min_months": 0, "max_months": 0, "default_months": 0},
+    "special_circumstances": [
+      {"id": "sc_001", "name": "双倍返还定金20万元", "correct": true, "effect": "支持"},
+      {"id": "sc_002", "name": "继续履行合同", "correct": true, "effect": "可由原告选择"},
+      {"id": "sc_003", "name": "赔偿精神损害", "correct": false, "effect": "不支持"}
+    ]
+  },
+  "standard_answer": {
+    "judgment": "支持原告诉请",
+    "conviction": "违约责任",
+    "sentence": "双倍返还定金20万元",
+    "legal_basis": [
+      "《中华人民共和国民法典》第563条：当事人一方迟延履行债务或者有其他违约行为致使不能实现合同目的，当事人可以解除合同。",
+      "《中华人民共和国民法典》第587条：债务人履行债务的，定金应当抵作价款或者收回。给付定金的一方不履行债务或者履行债务不符合约定，致使不能实现合同目的的，无权请求返还定金；收受定金的一方不履行债务或者履行债务不符合约定，致使不能实现合同目的的，应当双倍返还定金。"
+    ],
+    "reasoning": "乙公司因原材料价格上涨拒绝交货，属于违约行为，甲公司有权解除合同。乙公司作为收受定金一方不履行合同，应当双倍返还定金。甲公司还可就另行采购产生的差价损失主张赔偿。"
+  },
+  "scoring_rules": {
+    "total_score": 100,
+    "result_score": 40,
+    "process_score": 30,
+    "law_score": 20,
+    "analysis_score": 10,
+    "key_points": [
+      {"content": "正确认定乙公司无权单方解除", "score": 15, "issue_id": "issue_001"},
+      {"content": "正确认定定金罚则", "score": 15, "issue_id": "issue_002"},
+      {"content": "判决结果正确", "score": 20, "type": "judgment"},
+      {"content": "正确认定特殊情节", "score": 10, "type": "circumstances"}
+    ]
+  },
+  "knowledge_points": [
+    {"name": "合同解除权", "category": "民法", "importance": "high"},
+    {"name": "定金罚则", "category": "民法", "importance": "high"}
+  ]
+}

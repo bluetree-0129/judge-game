@@ -1,0 +1,114 @@
+{
+  "id": "case_006",
+  "title": "周某不当得利案",
+  "difficulty": "easy",
+  "category": "民法",
+  "tags": ["不当得利", "返还义务", "善意占有"],
+  "background": {
+    "summary": "2024年2月，甲公司通过银行转账向乙公司支付货款10万元，因财务人员操作失误，将款项误汇入丙公司账户。丙公司在收到该笔款项后，将其用于偿还自身债务。甲公司发现后要求丙公司返还，丙公司辩称其不知道该款属于误汇，且已用于还债，无法返还。",
+    "occurrence_date": "2024-02-15",
+    "location": "银行转账"
+  },
+  "parties": {
+    "defendant": {
+      "name": "丙公司",
+      "age": null,
+      "occupation": "贸易公司",
+      "criminal_record": null
+    },
+    "victim": {
+      "name": "甲公司",
+      "age": null,
+      "occupation": "生产企业"
+    }
+  },
+  "evidence": [
+    {
+      "id": "ev_001",
+      "type": "书证",
+      "name": "银行转账记录",
+      "content": "甲公司向丙公司账户转账10万元，附言为货款。实际应付对象为乙公司。",
+      "source": "银行",
+      "credibility": "high",
+      "highlights": [{"text": "向丙公司账户转账10万元", "analysis": "误汇事实的关键证据"}]
+    },
+    {
+      "id": "ev_002",
+      "type": "书证",
+      "name": "购销合同",
+      "content": "甲公司与乙公司签订购销合同，应付货款10万元，与丙公司无业务往来。",
+      "source": "甲公司",
+      "credibility": "high",
+      "highlights": []
+    },
+    {
+      "id": "ev_003",
+      "type": "书证",
+      "name": "丙公司还款记录",
+      "content": "丙公司收到10万元后当日即用于偿还对丁公司的欠款。",
+      "source": "银行",
+      "credibility": "high",
+      "highlights": [{"text": "已用于偿还债务", "analysis": "涉及返还范围与孳息问题"}]
+    }
+  ],
+  "legal_issues": [
+    {
+      "id": "issue_001",
+      "question": "丙公司收到甲公司误汇款项的行为在法律上如何定性？",
+      "type": "定性问题",
+      "order": 1,
+      "options": [
+        {"id": "opt_001", "text": "构成不当得利", "correct": true, "score": 10, "reasoning": "丙公司没有法律根据取得10万元款项，造成甲公司损失，构成不当得利。", "related_laws": ["民法典第985条"]},
+        {"id": "opt_002", "text": "构成侵权", "correct": false, "score": 0, "feedback": "丙公司并非通过侵权行为取得款项，而是因甲公司误汇获得利益，应认定为不当得利。"},
+        {"id": "opt_003", "text": "合法取得", "correct": false, "score": 0, "feedback": "丙公司与甲公司无业务往来，其取得款项缺乏法律根据，不属于合法取得。"}
+      ]
+    },
+    {
+      "id": "issue_002",
+      "question": "丙公司是否应当返还该10万元？",
+      "type": "法律适用",
+      "order": 2,
+      "options": [
+        {"id": "opt_004", "text": "应当返还，但可以主张善意抗辩", "correct": false, "score": 0, "feedback": "我国民法典不当得利制度中没有善意抗辩作为完全免除返还义务的依据，善意仅影响返还范围。"},
+        {"id": "opt_005", "text": "应当返还全部10万元及相应利息", "correct": true, "score": 10, "reasoning": "丙公司应返还不当利益，包括原物及孳息；因其已消费该款项，应折价返还并支付利息。", "related_laws": ["民法典第987条"]},
+        {"id": "opt_006", "text": "无需返还，因其不知情且已消费", "correct": false, "score": 0, "feedback": "不知情且已消费不能免除不当得利的返还义务。"}
+      ]
+    }
+  ],
+  "judgment_options": {
+    "guilty_options": ["支持原告诉请", "驳回原告诉请"],
+    "sentencing_range": {"min_months": 0, "max_months": 0, "default_months": 0},
+    "special_circumstances": [
+      {"id": "sc_001", "name": "返还不当得利本金", "correct": true, "effect": "支持"},
+      {"id": "sc_002", "name": "返还利息", "correct": true, "effect": "支持"},
+      {"id": "sc_003", "name": "赔偿精神损害", "correct": false, "effect": "不支持"}
+    ]
+  },
+  "standard_answer": {
+    "judgment": "支持原告诉请",
+    "conviction": "不当得利返还",
+    "sentence": "返还10万元及利息",
+    "legal_basis": [
+      "《中华人民共和国民法典》第985条：得利人没有法律根据取得不当利益的，受损失的人可以请求得利人返还取得的利益。",
+      "《中华人民共和国民法典》第987条：得利人知道或者应当知道取得的利益没有法律根据的，受损失的人可以请求得利人返还其取得的利益并依法赔偿损失。"
+    ],
+    "reasoning": "丙公司无法律根据取得甲公司误汇的10万元，造成甲公司损失，构成不当得利。丙公司虽称不知情，但其将款项用于偿还自身债务，主观上至少存在应当知道的可能。甲公司有权请求丙公司返还10万元及相应利息。"
+  },
+  "scoring_rules": {
+    "total_score": 100,
+    "result_score": 40,
+    "process_score": 30,
+    "law_score": 20,
+    "analysis_score": 10,
+    "key_points": [
+      {"content": "正确认定不当得利", "score": 15, "issue_id": "issue_001"},
+      {"content": "正确认定返还范围", "score": 15, "issue_id": "issue_002"},
+      {"content": "判决结果正确", "score": 20, "type": "judgment"},
+      {"content": "正确认定特殊情节", "score": 10, "type": "circumstances"}
+    ]
+  },
+  "knowledge_points": [
+    {"name": "不当得利构成要件", "category": "民法", "importance": "high"},
+    {"name": "不当得利返还范围", "category": "民法", "importance": "high"}
+  ]
+}

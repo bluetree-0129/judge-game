@@ -1,0 +1,272 @@
+@import './variables.scss';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: $pixel-font;
+  background-color: $background-color;
+  color: $text-color;
+  line-height: 1.6;
+}
+
+// 像素风格按钮
+.btn {
+  display: inline-block;
+  padding: $spacing-sm $spacing-md;
+  border: $pixel-border-thin;
+  background: $primary-color;
+  color: $background-color;
+  font-family: $pixel-font;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.1s;
+  text-decoration: none;
+  text-align: center;
+  
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 3px rgba($secondary-color, 0.5);
+  }
+  
+  &:active {
+    transform: scale(0.98);
+  }
+  
+  &.btn-outline {
+    background: transparent;
+    color: $primary-color;
+    
+    &:hover {
+      background: $primary-color;
+      color: $background-color;
+    }
+  }
+  
+  &.btn-secondary {
+    background: $secondary-color;
+    color: $primary-color;
+  }
+  
+  &.btn-accent {
+    background: $accent-color;
+    color: white;
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  }
+}
+
+// 像素风格卡片
+.pixel-card {
+  border: $pixel-border;
+  background: $background-color;
+  padding: $spacing-md;
+}
+
+// 像素风格输入框
+.pixel-input {
+  width: 100%;
+  padding: $spacing-sm;
+  border: $pixel-border-thin;
+  background: #fff;
+  font-family: $pixel-font;
+  font-size: 14px;
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($secondary-color, 0.5);
+  }
+}
+
+// 像素风格复选框
+.pixel-checkbox {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  
+  input {
+    width: 20px;
+    height: 20px;
+    border: $pixel-border-thin;
+    background: #fff;
+    appearance: none;
+    margin-right: $spacing-sm;
+    
+    &:checked {
+      background: $primary-color;
+      position: relative;
+      
+      &::after {
+        content: '✓';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: $background-color;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+// 像素风格选项
+.pixel-option {
+  display: block;
+  padding: $spacing-md;
+  margin-bottom: $spacing-sm;
+  border: $pixel-border-thin;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+  
+  &:hover {
+    border-color: $secondary-color;
+    background: #fffef0;
+  }
+  
+  &.selected {
+    border-color: $primary-color;
+    background: #e8e3d4;
+  }
+  
+  &.correct {
+    border-color: #4CAF50;
+    background: #e8f5e9;
+  }
+  
+  &.wrong {
+    border-color: $accent-color;
+    background: #ffebee;
+  }
+}
+
+// 进度条
+.pixel-progress {
+  width: 100%;
+  height: 24px;
+  border: $pixel-border-thin;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+  
+  .pixel-progress-bar {
+    height: 100%;
+    background: $primary-color;
+    transition: width 0.3s ease;
+    
+    &.good {
+      background: #4CAF50;
+    }
+    
+    &.medium {
+      background: $secondary-color;
+    }
+    
+    &.bad {
+      background: $accent-color;
+    }
+  }
+}
+
+// 动画效果
+@keyframes pixelFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pixelShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  75% { transform: translateX(2px); }
+}
+
+@keyframes pixelSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in {
+  animation: pixelFadeIn 0.3s ease-out;
+}
+
+.animate-shake {
+  animation: pixelShake 0.2s ease-in-out;
+}
+
+.animate-slide-in {
+  animation: pixelSlideIn 0.3s ease-out;
+}
+
+// 页面容器
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $spacing-lg;
+}
+
+// 标题样式
+.page-title {
+  font-size: 24px;
+  color: $primary-color;
+  margin-bottom: $spacing-lg;
+  text-align: center;
+}
+
+// 导航栏
+.pixel-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-md;
+  background: $primary-color;
+  color: $background-color;
+  border-bottom: $pixel-border;
+  
+  .nav-brand {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: $spacing-md;
+    
+    a {
+      color: $background-color;
+      text-decoration: none;
+      padding: $spacing-xs $spacing-sm;
+      
+      &:hover {
+        background: rgba($secondary-color, 0.2);
+      }
+      
+      &.router-link-active {
+        background: $secondary-color;
+        color: $primary-color;
+      }
+    }
+  }
+}

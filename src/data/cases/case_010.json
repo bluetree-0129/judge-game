@@ -1,0 +1,115 @@
+{
+  "id": "case_010",
+  "title": "王某侵权责任案",
+  "difficulty": "easy",
+  "category": "民法",
+  "tags": ["侵权责任", "饲养动物损害", "免责事由"],
+  "background": {
+    "summary": "2024年4月10日下午，张某在小区内散步时，被同小区居民王某饲养的大型犬只扑倒咬伤，造成腿部多处撕裂伤，住院治疗10天，支出医疗费8000元。事发时，王某未给该犬只系犬绳，也未佩戴嘴套。张某要求王某赔偿医疗费、误工费等共计2万元，王某辩称张某系主动逗弄犬只，应自行承担责任。",
+    "occurrence_date": "2024-04-10",
+    "location": "某市某小区"
+  },
+  "parties": {
+    "defendant": {
+      "name": "王某",
+      "age": 45,
+      "occupation": "企业员工",
+      "criminal_record": null
+    },
+    "victim": {
+      "name": "张某",
+      "age": 50,
+      "occupation": "退休职工"
+    }
+  },
+  "evidence": [
+    {
+      "id": "ev_001",
+      "type": "鉴定意见",
+      "name": "伤情诊断及医疗费票据",
+      "content": "张某腿部多处撕裂伤，住院治疗10天，医疗费8000元，医生建议休息两周。",
+      "source": "医院",
+      "credibility": "high",
+      "highlights": [{"text": "医疗费8000元", "analysis": "损失范围"}]
+    },
+    {
+      "id": "ev_002",
+      "type": "证人证言",
+      "name": "小区监控及邻居证言",
+      "content": "监控显示王某饲养的大型犬未系绳、未戴嘴套，突然扑向正在散步的张某。邻居称未看到张某有逗弄犬只行为。",
+      "source": "小区物业及邻居",
+      "credibility": "high",
+      "highlights": [{"text": "未系绳、未戴嘴套", "analysis": "违反管理规定"}]
+    },
+    {
+      "id": "ev_003",
+      "type": "书证",
+      "name": "误工证明",
+      "content": "张某退休后返聘某单位工作，月收入6000元，因伤休息两周，误工损失3000元。",
+      "source": "张某工作单位",
+      "credibility": "medium",
+      "highlights": []
+    }
+  ],
+  "legal_issues": [
+    {
+      "id": "issue_001",
+      "question": "王某是否应当对张某的损害承担赔偿责任？",
+      "type": "法律适用",
+      "order": 1,
+      "options": [
+        {"id": "opt_001", "text": "应当承担无过错责任", "correct": true, "score": 10, "reasoning": "饲养动物造成他人损害，动物饲养人应当承担侵权责任；王某违反管理规定未采取安全措施，更不应免责。", "related_laws": ["民法典第1245条", "民法典第1246条"]},
+        {"id": "opt_002", "text": "应当承担过错责任", "correct": false, "score": 0, "feedback": "饲养动物致害适用无过错责任原则，不以饲养人过错为要件。"},
+        {"id": "opt_003", "text": "不承担责任，张某逗弄犬只", "correct": false, "score": 0, "feedback": "王某未能证明张某存在故意或重大过失，且其未采取安全措施，不能免责。"}
+      ]
+    },
+    {
+      "id": "issue_002",
+      "question": "张某可以主张哪些赔偿项目？",
+      "type": "法律适用",
+      "order": 2,
+      "options": [
+        {"id": "opt_004", "text": "医疗费、误工费、护理费等合理费用", "correct": true, "score": 10, "reasoning": "侵害他人造成人身损害的，应当赔偿医疗费、护理费、交通费、营养费、住院伙食补助费等为治疗和康复支出的合理费用，以及因误工减少的收入。", "related_laws": ["民法典第1179条"]},
+        {"id": "opt_005", "text": "只能主张医疗费", "correct": false, "score": 0, "feedback": "人身损害赔偿范围包括多项合理费用，不仅限于医疗费。"},
+        {"id": "opt_006", "text": "可以主张精神损害赔偿", "correct": false, "score": 0, "feedback": "一般动物咬伤未造成严重精神损害后果，通常不支持精神损害赔偿；且该选项与题意不完全吻合。"}
+      ]
+    }
+  ],
+  "judgment_options": {
+    "guilty_options": ["支持原告诉请", "驳回原告诉请"],
+    "sentencing_range": {"min_months": 0, "max_months": 0, "default_months": 0},
+    "special_circumstances": [
+      {"id": "sc_001", "name": "赔偿医疗费8000元", "correct": true, "effect": "支持"},
+      {"id": "sc_002", "name": "赔偿误工费3000元", "correct": true, "effect": "支持"},
+      {"id": "sc_003", "name": "赔偿精神损害抚慰金", "correct": false, "effect": "不支持"}
+    ]
+  },
+  "standard_answer": {
+    "judgment": "支持原告诉请",
+    "conviction": "动物侵权责任",
+    "sentence": "赔偿医疗费、误工费等合理损失",
+    "legal_basis": [
+      "《中华人民共和国民法典》第1245条：饲养的动物造成他人损害的，动物饲养人或者管理人应当承担侵权责任；但是，能够证明损害是因被侵权人故意或者重大过失造成的，可以不承担或者减轻责任。",
+      "《中华人民共和国民法典》第1246条：违反管理规定，未对动物采取安全措施造成他人损害的，动物饲养人或者管理人应当承担侵权责任；但是，能够证明损害是因被侵权人故意造成的，可以减轻责任。",
+      "《中华人民共和国民法典》第1179条：侵害他人造成人身损害的，应当赔偿医疗费、护理费、交通费、营养费、住院伙食补助费等为治疗和康复支出的合理费用，以及因误工减少的收入。"
+    ],
+    "reasoning": "王某饲养的大型犬未系绳、未戴嘴套，违反动物管理规定，致张某受伤，王某应承担无过错侵权责任。王某未能证明张某存在故意或重大过失，不能免责或减轻责任。张某主张的医疗费、误工费等合理损失应予支持。"
+  },
+  "scoring_rules": {
+    "total_score": 100,
+    "result_score": 40,
+    "process_score": 30,
+    "law_score": 20,
+    "analysis_score": 10,
+    "key_points": [
+      {"content": "正确认定动物致害无过错责任", "score": 15, "issue_id": "issue_001"},
+      {"content": "正确认定赔偿范围", "score": 15, "issue_id": "issue_002"},
+      {"content": "判决结果正确", "score": 20, "type": "judgment"},
+      {"content": "正确认定特殊情节", "score": 10, "type": "circumstances"}
+    ]
+  },
+  "knowledge_points": [
+    {"name": "饲养动物损害责任", "category": "民法", "importance": "high"},
+    {"name": "人身损害赔偿范围", "category": "民法", "importance": "high"}
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "id": "case_004",
+  "title": "赵六诈骗案",
+  "difficulty": "medium",
+  "category": "刑法",
+  "tags": ["诈骗罪", "数额巨大", "认罪认罚"],
+  "background": {
+    "summary": "2023年8月至2024年2月期间，被告人赵六虚构自己是某知名医院医生的事实，以能够帮助患者提前安排住院、手术等为由，通过网络平台发布信息，先后骗取15名被害人钱款共计人民币28万元。所得款项用于个人挥霍。案发后，赵六被抓获归案，其家属代为退赔全部赃款。",
+    "occurrence_date": "2023-08-01",
+    "location": "网络平台"
+  },
+  "parties": {
+    "defendant": {
+      "name": "赵六",
+      "age": 40,
+      "occupation": "无业",
+      "criminal_record": "无"
+    },
+    "victim": {
+      "name": "多名被害人",
+      "age": null,
+      "occupation": "患者及家属"
+    }
+  },
+  "evidence": [
+    {
+      "id": "ev_001",
+      "type": "书证",
+      "name": "聊天记录及转账凭证",
+      "content": "赵六与多名被害人的聊天记录显示其虚构医生身份并承诺安排住院手术；15名被害人共计转账28万元。",
+      "source": "被害人及网络平台",
+      "credibility": "high",
+      "highlights": [{"text": "虚构医生身份；共计转账28万元", "analysis": "诈骗罪虚构事实与数额认定关键"}]
+    },
+    {
+      "id": "ev_002",
+      "type": "证人证言",
+      "name": "医院证明",
+      "content": "某知名医院出具证明，确认赵六并非该院工作人员，亦无相关医疗资质。",
+      "source": "某知名医院",
+      "credibility": "high",
+      "highlights": []
+    },
+    {
+      "id": "ev_003",
+      "type": "书证",
+      "name": "退赔凭证",
+      "content": "赵六家属代为退赔全部28万元，并取得部分被害人谅解。",
+      "source": "公安机关",
+      "credibility": "high",
+      "highlights": [{"text": "退赔全部赃款", "analysis": "可作为从宽处罚情节"}]
+    }
+  ],
+  "legal_issues": [
+    {
+      "id": "issue_001",
+      "question": "赵六的行为构成何罪？",
+      "type": "定性问题",
+      "order": 1,
+      "options": [
+        {"id": "opt_001", "text": "诈骗罪", "correct": true, "score": 10, "reasoning": "赵六以非法占有为目的，虚构事实骗取他人财物，数额巨大，构成诈骗罪。", "related_laws": ["刑法第266条"]},
+        {"id": "opt_002", "text": "招摇撞骗罪", "correct": false, "score": 0, "feedback": "招摇撞骗罪要求冒充国家机关工作人员，医院医生不属于国家机关工作人员，应以诈骗罪论处。"},
+        {"id": "opt_003", "text": "合同诈骗罪", "correct": false, "score": 0, "feedback": "赵六并非在签订、履行合同过程中骗取财物，不符合合同诈骗罪构成要件。"}
+      ]
+    },
+    {
+      "id": "issue_002",
+      "question": "赵六诈骗数额28万元属于什么档次？",
+      "type": "数额认定",
+      "order": 2,
+      "options": [
+        {"id": "opt_004", "text": "数额巨大", "correct": true, "score": 10, "reasoning": "诈骗公私财物价值三万元至十万元以上为数额巨大，五十万元以上为数额特别巨大，28万元属于数额巨大。", "related_laws": ["刑法第266条"]},
+        {"id": "opt_005", "text": "数额较大", "correct": false, "score": 0, "feedback": "数额较大标准较低，28万元已远超数额巨大标准。"},
+        {"id": "opt_006", "text": "数额特别巨大", "correct": false, "score": 0, "feedback": "数额特别巨大标准为五十万元以上，28万元尚未达到。"}
+      ]
+    },
+    {
+      "id": "issue_003",
+      "question": "赵六家属退赔全部赃款对量刑有何影响？",
+      "type": "量刑情节",
+      "order": 3,
+      "options": [
+        {"id": "opt_007", "text": "可酌情从轻处罚", "correct": true, "score": 10, "reasoning": "退赔全部赃款并取得部分被害人谅解，属于悔罪表现，可酌情从轻处罚。", "related_laws": ["刑法第61条"]},
+        {"id": "opt_008", "text": "应当减轻处罚", "correct": false, "score": 0, "feedback": "退赔赃款并非法定减轻处罚情节，只能从轻或酌情从轻处罚。"},
+        {"id": "opt_009", "text": "不影响量刑", "correct": false, "score": 0, "feedback": "退赔赃款并取得谅解是重要的酌定从轻情节。"}
+      ]
+    }
+  ],
+  "judgment_options": {
+    "guilty_options": ["有罪", "无罪"],
+    "sentencing_range": {"min_months": 36, "max_months": 120, "default_months": 60},
+    "special_circumstances": [
+      {"id": "sc_001", "name": "退赃退赔", "correct": true, "effect": "可酌情从轻处罚"},
+      {"id": "sc_002", "name": "取得谅解", "correct": true, "effect": "可酌情从轻处罚"},
+      {"id": "sc_003", "name": "多次诈骗", "correct": true, "effect": "酌情从重处罚"}
+    ]
+  },
+  "standard_answer": {
+    "judgment": "有罪",
+    "conviction": "诈骗罪",
+    "sentence": "有期徒刑五年",
+    "legal_basis": [
+      "《中华人民共和国刑法》第266条：诈骗公私财物，数额较大的，处三年以下有期徒刑、拘役或者管制，并处或者单处罚金；数额巨大或者有其他严重情节的，处三年以上十年以下有期徒刑，并处罚金；数额特别巨大或者有其他特别严重情节的，处十年以上有期徒刑或者无期徒刑，并处罚金或者没收财产。",
+      "《中华人民共和国刑法》第61条：对于犯罪分子决定刑罚的时候，应当根据犯罪的事实、犯罪的性质、情节和对于社会的危害程度，依照本法的有关规定判处。"
+    ],
+    "reasoning": "赵六以非法占有为目的，虚构医生身份，骗取多人财物共计28万元，数额巨大，构成诈骗罪。其多次诈骗且对象为患者群体，主观恶性较大；但案发后退赔全部赃款并取得部分谅解，可酌情从轻处罚。综合判处有期徒刑五年。"
+  },
+  "scoring_rules": {
+    "total_score": 100,
+    "result_score": 40,
+    "process_score": 30,
+    "law_score": 20,
+    "analysis_score": 10,
+    "key_points": [
+      {"content": "正确认定诈骗罪", "score": 10, "issue_id": "issue_001"},
+      {"content": "正确认定数额巨大", "score": 10, "issue_id": "issue_002"},
+      {"content": "正确认定退赔情节", "score": 10, "issue_id": "issue_003"},
+      {"content": "判决结果正确", "score": 20, "type": "judgment"},
+      {"content": "量刑适当", "score": 10, "type": "sentencing"},
+      {"content": "正确认定特殊情节", "score": 10, "type": "circumstances"}
+    ]
+  },
+  "knowledge_points": [
+    {"name": "诈骗罪构成要件", "category": "刑法", "importance": "high"},
+    {"name": "诈骗罪数额标准", "category": "刑法", "importance": "high"},
+    {"name": "退赃退赔情节", "category": "刑法", "importance": "medium"}
+  ]
+}

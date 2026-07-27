@@ -1,0 +1,252 @@
+{
+  "id": "case_001",
+  "title": "张三盗窃案",
+  "difficulty": "easy",
+  "category": "刑法",
+  "tags": ["盗窃罪", "数额认定", "自首"],
+  "background": {
+    "summary": "2024年3月15日晚，被告人张三在某市某区李四家中，趁李四外出之机，采取撬锁手段进入室内，盗窃现金2000元及手机一部（价值3000元），共计5000元。案发后，张三主动到公安机关投案，如实供述犯罪事实，并主动退赃。",
+    "occurrence_date": "2024-03-15",
+    "location": "某市某区"
+  },
+  "parties": {
+    "defendant": {
+      "name": "张三",
+      "age": 35,
+      "occupation": "无业",
+      "criminal_record": "无"
+    },
+    "victim": {
+      "name": "李四",
+      "age": 42,
+      "occupation": "个体工商户"
+    }
+  },
+  "evidence": [
+    {
+      "id": "ev_001",
+      "type": "物证",
+      "name": "被盗物品清单",
+      "content": "经公安机关清点，被盗物品包括：\n1. 华为Mate40手机一部（购买价格3000元，现估值3000元）\n2. 现金2000元\n\n总计价值：5000元",
+      "source": "公安机关",
+      "credibility": "high",
+      "highlights": [
+        {
+          "text": "盗窃金额5000元",
+          "analysis": "关键争议点：数额较大标准为1000-3000元（各省标准不同），本案数额5000元已达到数额较大标准"
+        }
+      ]
+    },
+    {
+      "id": "ev_002",
+      "type": "书证",
+      "name": "被告人供述",
+      "content": "被告人张三供述：2024年3月15日晚20时许，我趁李四外出之机，用随身携带的撬锁工具撬开其家门，进入室内后，在卧室床头柜抽屉内发现现金2000元，在茶几上发现手机一部，随后将上述物品盗走。作案后，我主动到公安机关投案，如实交代了犯罪事实。",
+      "source": "公安机关",
+      "credibility": "high",
+      "highlights": [
+        {
+          "text": "主动到公安机关投案",
+          "analysis": "自首认定关键证据"
+        }
+      ]
+    },
+    {
+      "id": "ev_003",
+      "type": "证人证言",
+      "name": "被害人李四陈述",
+      "content": "被害人李四陈述：2024年3月15日晚18时我外出办事，22时回家发现家门被撬，家中现金2000元及手机一部被盗，损失约5000元。后得知是张三作案，张三已退还全部赃物。",
+      "source": "公安机关",
+      "credibility": "high",
+      "highlights": []
+    },
+    {
+      "id": "ev_004",
+      "type": "鉴定意见",
+      "name": "价格鉴定意见书",
+      "content": "经某市价格认证中心鉴定：被盗华为Mate40手机，购买时间2023年5月，购买价格3000元，鉴定价值3000元。",
+      "source": "价格认证中心",
+      "credibility": "high",
+      "highlights": []
+    }
+  ],
+  "legal_issues": [
+    {
+      "id": "issue_001",
+      "question": "张三的行为是否构成盗窃罪？",
+      "type": "定性问题",
+      "order": 1,
+      "options": [
+        {
+          "id": "opt_001",
+          "text": "构成盗窃罪",
+          "correct": true,
+          "score": 10,
+          "reasoning": "张三以非法占有为目的，秘密窃取他人财物，数额较大，符合盗窃罪构成要件。",
+          "related_laws": ["刑法第264条"]
+        },
+        {
+          "id": "opt_002",
+          "text": "构成侵占罪",
+          "correct": false,
+          "score": 0,
+          "feedback": "侵占罪要求代为保管他人财物或将遗忘物、埋藏物非法占为己有，张三并非代为保管，而是主动窃取，故不构成侵占罪。"
+        },
+        {
+          "id": "opt_003",
+          "text": "构成抢劫罪",
+          "correct": false,
+          "score": 0,
+          "feedback": "抢劫罪要求使用暴力、胁迫或其他方法压制被害人反抗，本案张三趁被害人外出之机秘密窃取，未使用暴力，不构成抢劫罪。"
+        }
+      ]
+    },
+    {
+      "id": "issue_002",
+      "question": "盗窃数额5000元属于什么档次？",
+      "type": "数额认定",
+      "order": 2,
+      "options": [
+        {
+          "id": "opt_004",
+          "text": "数额较大",
+          "correct": true,
+          "score": 10,
+          "reasoning": "根据司法解释，盗窃公私财物价值一千元至三千元以上为数额较大，三万元至十万元以上为数额巨大。本案数额5000元，属于数额较大。",
+          "related_laws": ["刑法第264条", "最高人民法院关于审理盗窃案件适用法律若干问题的解释"]
+        },
+        {
+          "id": "opt_005",
+          "text": "数额巨大",
+          "correct": false,
+          "score": 0,
+          "feedback": "数额巨大标准为三万元至十万元以上，本案数额5000元未达到该标准。"
+        },
+        {
+          "id": "opt_006",
+          "text": "数额较小",
+          "correct": false,
+          "score": 0,
+          "feedback": "数额较小一般指不足1000元的情况，本案数额5000元已达到数额较大标准。"
+        }
+      ]
+    },
+    {
+      "id": "issue_003",
+      "question": "张三主动投案的行为是否构成自首？",
+      "type": "量刑情节",
+      "order": 3,
+      "options": [
+        {
+          "id": "opt_007",
+          "text": "构成自首",
+          "correct": true,
+          "score": 10,
+          "reasoning": "张三犯罪后自动投案，如实供述自己的罪行，符合自首的构成要件。",
+          "related_laws": ["刑法第67条"]
+        },
+        {
+          "id": "opt_008",
+          "text": "不构成自首",
+          "correct": false,
+          "score": 0,
+          "feedback": "张三主动到公安机关投案并如实供述犯罪事实，符合自首条件。"
+        }
+      ]
+    }
+  ],
+  "judgment_options": {
+    "guilty_options": ["有罪", "无罪"],
+    "sentencing_range": {
+      "min_months": 6,
+      "max_months": 36,
+      "default_months": 12
+    },
+    "special_circumstances": [
+      {
+        "id": "sc_001",
+        "name": "自首",
+        "correct": true,
+        "effect": "可以从轻或者减轻处罚"
+      },
+      {
+        "id": "sc_002",
+        "name": "坦白",
+        "correct": false,
+        "effect": "可以从轻处罚"
+      },
+      {
+        "id": "sc_003",
+        "name": "退赃",
+        "correct": true,
+        "effect": "可以酌情从轻处罚"
+      }
+    ]
+  },
+  "standard_answer": {
+    "judgment": "有罪",
+    "conviction": "盗窃罪",
+    "sentence": "有期徒刑六个月",
+    "legal_basis": [
+      "《中华人民共和国刑法》第264条：盗窃公私财物，数额较大的，或者多次盗窃、入户盗窃、携带凶器盗窃、扒窃的，处三年以下有期徒刑、拘役或者管制，并处或者单处罚金。",
+      "《中华人民共和国刑法》第67条：犯罪以后自动投案，如实供述自己的罪行的，是自首。对于自首的犯罪分子，可以从轻或者减轻处罚。"
+    ],
+    "reasoning": "张三以非法占有为目的，入户秘密窃取他人财物，数额较大，其行为已构成盗窃罪。张三犯罪后自动投案，如实供述犯罪事实，系自首，依法可以从轻处罚。张三主动退赃，可酌情从轻处罚。综合考虑犯罪事实、性质、情节及社会危害程度，判处有期徒刑六个月。"
+  },
+  "scoring_rules": {
+    "total_score": 100,
+    "result_score": 40,
+    "process_score": 30,
+    "law_score": 20,
+    "analysis_score": 10,
+    "key_points": [
+      {
+        "content": "正确认定盗窃罪",
+        "score": 15,
+        "issue_id": "issue_001"
+      },
+      {
+        "content": "正确认定数额较大",
+        "score": 10,
+        "issue_id": "issue_002"
+      },
+      {
+        "content": "正确认定自首情节",
+        "score": 10,
+        "issue_id": "issue_003"
+      },
+      {
+        "content": "判决结果正确",
+        "score": 20,
+        "type": "judgment"
+      },
+      {
+        "content": "量刑适当",
+        "score": 10,
+        "type": "sentencing"
+      },
+      {
+        "content": "正确认定自首、退赃情节",
+        "score": 10,
+        "type": "circumstances"
+      }
+    ]
+  },
+  "knowledge_points": [
+    {
+      "name": "盗窃罪构成要件",
+      "category": "刑法",
+      "importance": "high"
+    },
+    {
+      "name": "盗窃数额认定标准",
+      "category": "刑法",
+      "importance": "high"
+    },
+    {
+      "name": "自首认定",
+      "category": "刑法",
+      "importance": "high"
+    }
+  ]
+}

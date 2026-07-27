@@ -1,0 +1,115 @@
+{
+  "id": "case_008",
+  "title": "郑某危险驾驶案",
+  "difficulty": "easy",
+  "category": "刑法",
+  "tags": ["危险驾驶罪", "醉驾", "从重处罚"],
+  "background": {
+    "summary": "2024年6月1日晚，被告人郑某饮酒后驾驶小型轿车在市区道路上行驶。经交警设卡检查，郑某血液中酒精含量为120mg/100ml。交警进一步调查发现，郑某曾于2022年因饮酒后驾驶机动车被行政处罚。本次驾驶过程中未造成交通事故。",
+    "occurrence_date": "2024-06-01",
+    "location": "某市市区道路"
+  },
+  "parties": {
+    "defendant": {
+      "name": "郑某",
+      "age": 34,
+      "occupation": "企业员工",
+      "criminal_record": "无"
+    },
+    "victim": {
+      "name": "无",
+      "age": null,
+      "occupation": null
+    }
+  },
+  "evidence": [
+    {
+      "id": "ev_001",
+      "type": "鉴定意见",
+      "name": "血液酒精含量鉴定",
+      "content": "郑某血液中酒精含量为120mg/100ml，达到醉酒驾驶标准。",
+      "source": "司法鉴定机构",
+      "credibility": "high",
+      "highlights": [{"text": "120mg/100ml", "analysis": "达到危险驾驶罪入罪标准"}]
+    },
+    {
+      "id": "ev_002",
+      "type": "书证",
+      "name": "行政处罚记录",
+      "content": "郑某于2022年因饮酒后驾驶机动车被交警部门罚款并暂扣驾驶证。",
+      "source": "交警部门",
+      "credibility": "high",
+      "highlights": [{"text": "曾因酒驾被行政处罚", "analysis": "可作为危险驾驶罪从重情节"}]
+    },
+    {
+      "id": "ev_003",
+      "type": "证人证言",
+      "name": "执勤交警证言",
+      "content": "郑某在设卡检查点被查获，现场配合检查，未发生拒检、逃逸等行为。",
+      "source": "执勤交警",
+      "credibility": "high",
+      "highlights": []
+    }
+  ],
+  "legal_issues": [
+    {
+      "id": "issue_001",
+      "question": "郑某的行为构成何罪？",
+      "type": "定性问题",
+      "order": 1,
+      "options": [
+        {"id": "opt_001", "text": "危险驾驶罪", "correct": true, "score": 10, "reasoning": "郑某在道路上醉酒驾驶机动车，构成危险驾驶罪。", "related_laws": ["刑法第133条之一"]},
+        {"id": "opt_002", "text": "交通肇事罪", "correct": false, "score": 0, "feedback": "郑某未造成交通事故和实际损害后果，不构成交通肇事罪。"},
+        {"id": "opt_003", "text": "不构成犯罪", "correct": false, "score": 0, "feedback": "醉酒驾驶机动车达到80mg/100ml即构成危险驾驶罪。"}
+      ]
+    },
+    {
+      "id": "issue_002",
+      "question": "郑某曾因饮酒后驾驶被行政处罚，本次醉驾时该情节如何处理？",
+      "type": "量刑情节",
+      "order": 2,
+      "options": [
+        {"id": "opt_004", "text": "属于从重处罚情节", "correct": true, "score": 10, "reasoning": "曾因酒后驾驶机动车受过行政处罚，再次醉酒驾驶的，属于危险驾驶罪的从重处罚情节。", "related_laws": ["刑法第133条之一", "最高法、最高检、公安部关于办理醉酒驾驶机动车刑事案件的意见"]},
+        {"id": "opt_005", "text": "构成累犯", "correct": false, "score": 0, "feedback": "行政处罚不构成累犯的前罪条件，累犯要求前后罪均为故意犯罪并被判处有期徒刑以上刑罚。"},
+        {"id": "opt_006", "text": "不影响量刑", "correct": false, "score": 0, "feedback": "曾因酒驾被处罚又醉驾，反映行为人主观恶性较大，属于从重情节。"}
+      ]
+    }
+  ],
+  "judgment_options": {
+    "guilty_options": ["有罪", "无罪"],
+    "sentencing_range": {"min_months": 1, "max_months": 6, "default_months": 3},
+    "special_circumstances": [
+      {"id": "sc_001", "name": "曾因酒驾受过行政处罚", "correct": true, "effect": "从重处罚"},
+      {"id": "sc_002", "name": "血液中酒精含量120mg/100ml", "correct": true, "effect": "已达入罪标准"},
+      {"id": "sc_003", "name": "配合检查", "correct": false, "effect": "可酌情从轻"}
+    ]
+  },
+  "standard_answer": {
+    "judgment": "有罪",
+    "conviction": "危险驾驶罪",
+    "sentence": "拘役三个月，并处罚金人民币五千元",
+    "legal_basis": [
+      "《中华人民共和国刑法》第133条之一：在道路上驾驶机动车，有下列情形之一的，处拘役，并处罚金：（二）醉酒驾驶机动车的。",
+      "最高人民法院、最高人民检察院、公安部《关于办理醉酒驾驶机动车刑事案件适用法律若干问题的意见》第二条：醉酒驾驶机动车，具有下列情形之一的，依照刑法第一百三十三条之一第一款的规定，从重处罚：（七）曾因酒后驾驶机动车受过行政处罚或者刑事追究的。"
+    ],
+    "reasoning": "郑某血液中酒精含量为120mg/100ml，属于醉酒驾驶机动车，构成危险驾驶罪。其曾因饮酒后驾驶受过行政处罚，再次醉驾，应从重处罚。鉴于其现场配合检查，可酌情从轻。综合判处拘役三个月，并处罚金人民币五千元。"
+  },
+  "scoring_rules": {
+    "total_score": 100,
+    "result_score": 40,
+    "process_score": 30,
+    "law_score": 20,
+    "analysis_score": 10,
+    "key_points": [
+      {"content": "正确认定危险驾驶罪", "score": 15, "issue_id": "issue_001"},
+      {"content": "正确认定从重情节", "score": 15, "issue_id": "issue_002"},
+      {"content": "判决结果正确", "score": 20, "type": "judgment"},
+      {"content": "量刑适当", "score": 10, "type": "sentencing"},
+      {"content": "正确认定特殊情节", "score": 10, "type": "circumstances"}
+    ]
+  },
+  "knowledge_points": [
+    {"name": "危险驾驶罪构成要件", "category": "刑法", "importance": "high"},
+    {"name": "危险驾驶罪从重情节", "category": "刑法", "importance": "high"}
+  ]
+}

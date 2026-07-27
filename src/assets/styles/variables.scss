@@ -1,0 +1,21 @@
+// 像素风格配色方案
+$primary-color: #2B3A67;      // 深蓝色 - 主色调
+$secondary-color: #FFD700;    // 金色 - 辅助色
+$accent-color: #C41E3A;       // 红色 - 强调色
+$background-color: #F5F0E1;   // 浅米色 - 背景色
+$text-color: #2B3A67;         // 文字颜色
+$border-color: #2B3A67;       // 边框颜色
+
+// 像素边框样式
+$pixel-border: 3px solid $border-color;
+$pixel-border-thin: 2px solid $border-color;
+
+// 字体
+$pixel-font: 'Courier New', monospace;
+
+// 间距
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;

@@ -1,0 +1,114 @@
+{
+  "id": "case_009",
+  "title": "吴某寻衅滋事案",
+  "difficulty": "medium",
+  "category": "刑法",
+  "tags": ["寻衅滋事罪", "公共场所", "随意殴打"],
+  "background": {
+    "summary": "2024年3月15日晚，被告人吴某在KTV饮酒后，因认为邻桌顾客陈某多看了自己一眼，心生不满，遂拿起酒瓶砸向陈某头部，致陈某头皮裂伤，经鉴定为轻微伤。随后吴某又在KTV大厅内追逐、辱骂上前劝阻的工作人员，造成KTV秩序严重混乱，持续时间约20分钟。",
+    "occurrence_date": "2024-03-15",
+    "location": "某市KTV"
+  },
+  "parties": {
+    "defendant": {
+      "name": "吴某",
+      "age": 29,
+      "occupation": "自由职业",
+      "criminal_record": "无"
+    },
+    "victim": {
+      "name": "陈某",
+      "age": 32,
+      "occupation": "公司职员"
+    }
+  },
+  "evidence": [
+    {
+      "id": "ev_001",
+      "type": "鉴定意见",
+      "name": "伤情鉴定",
+      "content": "陈某头皮裂伤，评定为轻微伤。",
+      "source": "司法鉴定中心",
+      "credibility": "high",
+      "highlights": [{"text": "轻微伤", "analysis": "未达故意伤害罪轻伤标准"}]
+    },
+    {
+      "id": "ev_002",
+      "type": "证人证言",
+      "name": "现场工作人员证言",
+      "content": "吴某酒后无故用酒瓶砸人，被劝阻后又辱骂、追逐工作人员，导致KTV大厅秩序混乱，多名顾客提前离开。",
+      "source": "KTV工作人员",
+      "credibility": "medium",
+      "highlights": [{"text": "无故用酒瓶砸人；辱骂、追逐工作人员", "analysis": "寻衅滋事行为表现"}]
+    },
+    {
+      "id": "ev_003",
+      "type": "书证",
+      "name": "监控录像",
+      "content": "KTV监控显示吴某无故殴打陈某，并在公共场所追逐、辱骂他人，造成秩序混乱约20分钟。",
+      "source": "KTV",
+      "credibility": "high",
+      "highlights": []
+    }
+  ],
+  "legal_issues": [
+    {
+      "id": "issue_001",
+      "question": "吴某的行为构成何罪？",
+      "type": "定性问题",
+      "order": 1,
+      "options": [
+        {"id": "opt_001", "text": "寻衅滋事罪", "correct": true, "score": 10, "reasoning": "吴某在公共场所无事生非、随意殴打他人，追逐、辱骂他人，严重破坏社会秩序，构成寻衅滋事罪。", "related_laws": ["刑法第293条"]},
+        {"id": "opt_002", "text": "故意伤害罪", "correct": false, "score": 0, "feedback": "陈某仅为轻微伤，未达故意伤害罪轻伤标准，且吴某行为更符合寻衅滋事罪的犯罪构成。"},
+        {"id": "opt_003", "text": "不构成犯罪", "correct": false, "score": 0, "feedback": "吴某在公共场所随意殴打他人并造成秩序严重混乱，已构成寻衅滋事罪。"}
+      ]
+    },
+    {
+      "id": "issue_002",
+      "question": "吴某在KTV追逐、辱骂工作人员的行为应如何评价？",
+      "type": "定性问题",
+      "order": 2,
+      "options": [
+        {"id": "opt_004", "text": "属于寻衅滋事行为", "correct": true, "score": 10, "reasoning": "追逐、辱骂他人，情节恶劣，破坏社会秩序，属于寻衅滋事罪的客观表现。", "related_laws": ["刑法第293条"]},
+        {"id": "opt_005", "text": "属于正当防卫", "correct": false, "score": 0, "feedback": "工作人员劝阻行为不属于不法侵害，吴某的追逐辱骂不构成正当防卫。"},
+        {"id": "opt_006", "text": "属于一般违法行为", "correct": false, "score": 0, "feedback": "该行为已达到情节恶劣程度，应作为寻衅滋事罪处理，而非一般违法。"}
+      ]
+    }
+  ],
+  "judgment_options": {
+    "guilty_options": ["有罪", "无罪"],
+    "sentencing_range": {"min_months": 6, "max_months": 60, "default_months": 12},
+    "special_circumstances": [
+      {"id": "sc_001", "name": "在公共场所实施", "correct": true, "effect": "酌情从重处罚"},
+      {"id": "sc_002", "name": "酒后作案", "correct": false, "effect": "不影响定罪"},
+      {"id": "sc_003", "name": "造成公共场所秩序混乱", "correct": true, "effect": "从重处罚"}
+    ]
+  },
+  "standard_answer": {
+    "judgment": "有罪",
+    "conviction": "寻衅滋事罪",
+    "sentence": "有期徒刑一年六个月",
+    "legal_basis": [
+      "《中华人民共和国刑法》第293条：有下列寻衅滋事行为之一，破坏社会秩序的，处五年以下有期徒刑、拘役或者管制：（一）随意殴打他人，情节恶劣的；（二）追逐、拦截、辱骂、恐吓他人，情节恶劣的；（四）在公共场所起哄闹事，造成公共场所秩序严重混乱的。"
+    ],
+    "reasoning": "吴某在公共场所无事生非，随意殴打他人致轻微伤，并追逐、辱骂劝阻人员，造成KTV秩序严重混乱，情节恶劣，构成寻衅滋事罪。鉴于其系酒后临时起意，判处其有期徒刑一年六个月。"
+  },
+  "scoring_rules": {
+    "total_score": 100,
+    "result_score": 40,
+    "process_score": 30,
+    "law_score": 20,
+    "analysis_score": 10,
+    "key_points": [
+      {"content": "正确认定寻衅滋事罪", "score": 15, "issue_id": "issue_001"},
+      {"content": "正确认定追逐辱骂行为性质", "score": 15, "issue_id": "issue_002"},
+      {"content": "判决结果正确", "score": 20, "type": "judgment"},
+      {"content": "量刑适当", "score": 10, "type": "sentencing"},
+      {"content": "正确认定特殊情节", "score": 10, "type": "circumstances"}
+    ]
+  },
+  "knowledge_points": [
+    {"name": "寻衅滋事罪构成要件", "category": "刑法", "importance": "high"},
+    {"name": "寻衅滋事与故意伤害区分", "category": "刑法", "importance": "high"}
+  ]
+}

@@ -261,18 +261,20 @@ const relatedLaws = computed(() => {
     caseStore.currentCase.tags.forEach(tag => {
       criminalLaw.articles.forEach(article => {
         if (article.keywords.some(kw => tag.includes(kw))) {
-          const match = article.number.match(/第(\d+)条/)
-          if (match) {
-            lawNumbers.add(parseInt(match[1]))
+          if (article.arabic_number) {
+            lawNumbers.add(article.arabic_number)
           }
         }
       })
     })
   }
   
+  if (lawNumbers.size === 0) {
+    return criminalLaw.articles
+  }
+  
   return criminalLaw.articles.filter(article => {
-    const match = article.number.match(/第(\d+)条/)
-    return match && lawNumbers.has(parseInt(match[1]))
+    return article.arabic_number && lawNumbers.has(article.arabic_number)
   })
 })
 

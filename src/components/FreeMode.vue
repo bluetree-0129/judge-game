@@ -160,6 +160,7 @@ import { ref, computed } from 'vue'
 import { useCaseStore } from '@/stores/caseStore'
 import { ScoreEngine } from '@/engines/scoreEngine'
 import EvidenceViewer from './EvidenceViewer.vue'
+import criminalLaw from '@/data/laws/criminal_law.json'
 
 const caseStore = useCaseStore()
 
@@ -186,20 +187,51 @@ const judgmentOptions = computed(() => {
 })
 
 const laws = computed(() => {
-  return [
-    {
-      id: 'art_264',
-      number: '第二百六十四条',
-      title: '盗窃罪',
-      content: '盗窃公私财物，数额较大的，或者多次盗窃、入户盗窃、携带凶器盗窃、扒窃的，处三年以下有期徒刑、拘役或者管制，并处或者单处罚金；数额巨大或者有其他严重情节的，处三年以上十年以下有期徒刑，并处罚金；数额特别巨大或者有其他特别严重情节的，处十年以上有期徒刑或者无期徒刑，并处罚金或者没收财产。'
-    },
-    {
-      id: 'art_67',
-      number: '第六十七条',
-      title: '自首与坦白',
-      content: '犯罪以后自动投案，如实供述自己的罪行的，是自首。对于自首的犯罪分子，可以从轻或者减轻处罚。其中，犯罪较轻的，可以免除处罚。'
-    }
-  ]
+  const lawNumbers = new Set()
+  
+  if (caseStore.currentCase?.legal_issues) {
+    caseStore.currentCase.legal_issues.forEach(issue => {
+      issue.options.forEach(option => {
+        if (option.related_laws) {
+          option.related_laws.forEach(lawRef => {
+            const match = lawRef.match(/第(\d+)条/)
+            if (match) {
+              lawNumbers.add(parseInt(match[1]))
+            }
+          })
+        }
+      })
+    })
+  }
+  
+  if (caseStore.currentCase?.standard_answer?.legal_basis) {
+    caseStore.currentCase.standard_answer.legal_basis.forEach(law => {
+      const match = law.match(/第(\d+)条/)
+      if (match) {
+        lawNumbers.add(parseInt(match[1]))
+      }
+    })
+  }
+  
+  if (caseStore.currentCase?.tags) {
+    caseStore.currentCase.tags.forEach(tag => {
+      criminalLaw.articles.forEach(article => {
+        if (article.keywords.some(kw => tag.includes(kw))) {
+          if (article.arabic_number) {
+            lawNumbers.add(article.arabic_number)
+          }
+        }
+      })
+    })
+  }
+  
+  if (lawNumbers.size === 0) {
+    return criminalLaw.articles
+  }
+  
+  return criminalLaw.articles.filter(article => {
+    return article.arabic_number && lawNumbers.has(article.arabic_number)
+  })
 })
 
 function addToNotes(evidence) {

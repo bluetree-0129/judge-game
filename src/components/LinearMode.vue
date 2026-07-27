@@ -202,6 +202,9 @@ import { useCaseStore } from '@/stores/caseStore'
 import { ScoreEngine } from '@/engines/scoreEngine'
 import EvidenceViewer from './EvidenceViewer.vue'
 import criminalLaw from '@/data/laws/criminal_law.json'
+import civilLaw from '@/data/laws/civil_law.json'
+
+const allLaws = [...criminalLaw.articles, ...civilLaw.articles]
 
 const caseStore = useCaseStore()
 
@@ -259,8 +262,8 @@ const relatedLaws = computed(() => {
   
   if (caseStore.currentCase?.tags) {
     caseStore.currentCase.tags.forEach(tag => {
-      criminalLaw.articles.forEach(article => {
-        if (article.keywords.some(kw => tag.includes(kw))) {
+      allLaws.forEach(article => {
+        if (article.keywords && article.keywords.some(kw => tag.includes(kw))) {
           if (article.arabic_number) {
             lawNumbers.add(article.arabic_number)
           }
@@ -270,10 +273,10 @@ const relatedLaws = computed(() => {
   }
   
   if (lawNumbers.size === 0) {
-    return criminalLaw.articles
+    return allLaws
   }
   
-  return criminalLaw.articles.filter(article => {
+  return allLaws.filter(article => {
     return article.arabic_number && lawNumbers.has(article.arabic_number)
   })
 })

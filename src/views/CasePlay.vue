@@ -16,19 +16,19 @@
       </div>
       
       <div v-else class="game-content">
+        <!-- 评分结果（优先于游戏模式） -->
+        <template v-if="caseStore.scoreResult">
+          <ScoreResult />
+        </template>
+        
         <!-- 线性模式 -->
-        <template v-if="caseStore.gameMode === 'linear'">
+        <template v-else-if="caseStore.gameMode === 'linear'">
           <LinearMode :case-id="id" />
         </template>
         
         <!-- 自由探索模式 -->
         <template v-else-if="caseStore.gameMode === 'free'">
           <FreeMode :case-id="id" />
-        </template>
-        
-        <!-- 评分结果 -->
-        <template v-else-if="caseStore.scoreResult">
-          <ScoreResult />
         </template>
         
         <div v-else class="error-state">
